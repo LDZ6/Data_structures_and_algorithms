@@ -33,7 +33,7 @@ int LinkList::getElem(){
 	int p;
 	listNode* pointer = l->next;
 	int i = 1;
-	cout << "ÇëÊäÈë²éÕÒµÄÎ»ÖÃ;" << endl;
+	cout << "è¯·è¾“å…¥æŸ¥æ‰¾çš„ä½ç½®;" << endl;
 	cin >> p;
 	for (; pointer && p > i; i++)
 	{
@@ -43,7 +43,7 @@ int LinkList::getElem(){
 	{
 		return ERROR;
 	}
-	cout << "ÖµÎª:" <<pointer->data<< endl;
+	cout << "å€¼ä¸º:" <<pointer->data<< endl;
 	return pointer->data;
 }
 
@@ -51,14 +51,14 @@ int LinkList::locateELem() {
 	int val;
 	listNode* pointer = l->next;
 	int p=1;
-	cout << "ÇëÊäÈëÄãÏëÒª²éÕÒµÄÖµ:" << endl;
+	cout << "è¯·è¾“å…¥ä½ æƒ³è¦æŸ¥æ‰¾çš„å€¼:" << endl;
 	cin >> val;
 	while (pointer->data != val && pointer) {
 		pointer = pointer->next;
 		p++;
 	}
 	if (pointer != NULL) {
-		cout << "ÖµµÄÎ»ÖÃÊÇ:" << p;
+		cout << "å€¼çš„ä½ç½®æ˜¯:" << p;
 		return p;
 	}
 	return OVERFLOW;
@@ -69,13 +69,13 @@ int LinkList::listInsert() {
 	listNode* pointer=l;
 	listNode* node = new listNode;
 	int i = 0;
-	cout << "ÇëÊäÈëÄãÏëÒª²åÈëµÄÎ»ÖÃºÍÖµ:" << endl;
+	cout << "è¯·è¾“å…¥ä½ æƒ³è¦æ’å…¥çš„ä½ç½®å’Œå€¼:" << endl;
 	cin >> p>>node->data;
 	for (; pointer && p > i-1; i++)
 		pointer = pointer->next;
 	if (!pointer || p < i-1)
 	{
-		cout << "ÄãÊäÈëµÄÖµÓÐÎó" << endl; 
+		cout << "ä½ è¾“å…¥çš„å€¼æœ‰è¯¯" << endl; 
 		return ERROR;
 	}
 	node->next = pointer->next;
@@ -86,7 +86,7 @@ int LinkList::listInsert() {
 
 int LinkList::listDelete() {
 	int p;
-	cout << "ÇëÊäÈëÄãÏëÒªÉ¾³ýµÄÎ»ÖÃ:" << endl;
+	cout << "è¯·è¾“å…¥ä½ æƒ³è¦åˆ é™¤çš„ä½ç½®:" << endl;
 	cin >> p;
 	listNode* deletepointer, *prepointer=l->next;
 	for (int i = 1; i < p && prepointer->next  != NULL; i++) {
@@ -99,6 +99,25 @@ int LinkList::listDelete() {
 	deletepointer = prepointer->next;
 	prepointer->next = prepointer->next->next;
 	delete deletepointer;
+	return OK;
+
+}
+
+int LinkList::creatList() {
+	listNode* r = l->next;
+	int c;
+	int i;
+	cout << "è¯·è¾“å…¥ä½ æƒ³è¦åˆ›å»ºçš„ä¸ªæ•°:" << endl;
+	cin >> i;
+	for (int j = 0; j < i; j++)
+	{
+		listNode* newNode=new listNode;
+		cout << "è¯·è¾“å…¥æ­¤èŠ‚ç‚¹çš„å€¼" << endl;
+		cin >> newNode->data;
+		newNode->next = NULL;
+		r->next = newNode;
+		r = newNode;
+	}
 	return OK;
 
 }
